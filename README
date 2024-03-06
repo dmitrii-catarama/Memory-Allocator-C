@@ -1,0 +1,31 @@
+    Proiect de facultate elaborat la obiectul Sisteme de Operare.
+
+
+## Obiective
+
+- Intelegerea elementelor de bază ale managementului memoriei prin 
+implementarea versiunilor minime de `malloc()`, `calloc()`, `realloc()`
+și `free()`.
+- Acomodarea cu apelurile de sistem de gestionare a memoriei în Linux:
+`brk()`, `mmap()` și `munmap()`.
+
+
+
+## Continutul proiectului
+
+- `src/` contine implementarea personalizata
+- `utils/` contine `osmem.h` ce reprezinta interfata librariei,
+`block_meta.h` ce contine detalii despre `struct block_meta`, si implementarea
+`printf()` functiei ce **NU** foloseste memoria de pe heap
+
+
+## Precizari importante
+
+- Cantitatea de memorie mai mica de `MMAP_THRESHOLD` va fi alocata cu `brk()`,
+cantitati mari de memorie vor fi alocate utilizand `mmap()`.
+- Daca parametrul functiei `malloc` sau `calloc` este 0, se returneaza `NULL`.
+- Memoria alocată ar trebui să fie aliniată (adică toate adresele sunt multiple
+de o dimensiune dată). Acesta este un compromis spațiu-timp, deoarece blocurile
+de memorie sunt umplute astfel încât fiecare să poată fi citit într-o singură
+tranzacție. Toate alocările de memorie ar trebui să fie aliniate la
+**8 octeți** conform cerințelor sistemelor pe 64 de biți.
